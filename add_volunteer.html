@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+    }
+
+    form {
+      background-color: white;
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #666666;
+      margin-top: 0;
+    }
+
+    input[type=number],
+    input[type=text],
+    input[type=date],
+    input[type=email],
+    input[type=tel],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    button[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+   
+    .gender{
+      display: flex;
+margin-left: 7rem;
+gap: 2rem;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <form action="add_volunteer.php" method="post" enctype="multipart/form-data">
+    <h2>Student Details Form</h2>
+
+    <label for="rollno">Roll no:</label>
+    <input type="text"onkeyup='check_no(rollno)' id="rollno" name="rollno" placeholder="Enter your Roll no" required>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="fname"> Father Name:</label>
+    <input type="text" id="name" name="fname" placeholder="Enter your fathername" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="phone">Phone:</label>
+    <input type="text" pattern="^\d{10}$" title=" Please Enter Proper Mobile Number" id="phone" name="phoneno" placeholder="Enter your phone number" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="date" name="dob" max="2005-12-31" min="2000-01-01" required>
+    <label for="gender">Gender:</label><br>
+    <div class="gender">
+      <input type="radio" name="gender" value="male" id="" required>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" value="female" id="" required>
+      <label for="female">Female</label> 
+    </div>
+<br>
+<label for="Category">Category:</label>
+<select id="Category" name="Category" required>
+  <option value="">Select Category</option>
+  <option value="General">General</option>
+  <option value="ST/SC">ST/SC</option>
+  <option value="Others">Others</option>
+</select>
+
+
+    <label for="class">Class:</label>
+    <select id="class" name="class" required>
+      <option value="">Select Class</option>
+      <option value="I BCOM A">I BCOM A</option>
+      <option value="I BCOM B">I BCOM B</option>
+      <option value="I BCOM C">I BCOM C</option>
+      <option value="I BCOM D">I BCOM D</option>
+      <option value="I BCA">I BCA</option>
+      <option value="I BSC A">I BSC A</option>
+      <option value="I BSC B">I BSC B</option>
+      <option value="I BA A">I BA A</option>
+      <option value="I BA B">I BA B</option>
+      <option value="I BBA">I BBA</option>
+      <option value="II BCOM A">II BCOM A</option>
+      <option value="II BCOM B">II BCOM B</option>
+      <option value="II BCOM C">II BCOM C</option>
+      <option value="II BCOM D">II BCOM D</option>
+      <option value="II BCA">II BCA</option>
+      <option value="II BSC A">II BSC A</option>
+      <option value="II BSC B">II BSC B</option>
+      <option value="II BA A">II BA A</option>
+      <option value="II BA B">II BA B</option>
+      <option value="II BBA">II BBA</option>
+    </select>
+
+    <label for="bloodgroup">Blood Group:</label>
+    <select id="bloodgroup" name="bloodgroup" required>
+      <option value="">Select blood group</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+
+    <label for="batch">Batch:</label>
+    <select id="batch" name="batch" required>
+      <option value="">Select Batch</option>
+      <option value="2022-24">2022-24</option>
+      <option value="2023-25">2023-25</option>
+    </select>
+
+
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+    <label for="Photo">Upload Image:</label>
+    <input type="file" id="img" name="img" accept="image/*" required>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+<script>
+  function check_no(t) {
+    if (!Number.isFinite(Number(t.value))) {
+      t.value = t.value.substr(0, (t.value).length - 1);
+    }
+  }
+
+  // function validateDate() {
+  //     const inputDate = new Date(document.getElementById('birthdate').value);
+  //     const currentDate = new Date();
+  //     const seventeenYearsAgo = new Date(currentDate.getFullYear() - 17, currentDate.getMonth(), currentDate.getDate());
+  //     const twentyThreeYearsAgo = new Date(currentDate.getFullYear() - 23, currentDate.getMonth(), currentDate.getDate());
+
+  //     if (inputDate < seventeenYearsAgo) {
+  //       alert("You must be at least 17 years old to proceed.");
+  //     } else if (inputDate >= twentyThreeYearsAgo) {
+  //       alert("You must be less than 23 years old to proceed.");
+  //     }
+  //   }
+</script>
+</html>
